@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { categories } from "./categories";
 import Logo from "../../assets/logo.svg";
 import CartIcon from "../../assets/icon-cart.svg";
@@ -6,14 +6,18 @@ import Avatar from "../../assets/image-avatar.png";
 import Menu from "../../assets/icon-menu.svg";
 import useWindowDimensions from "../../hooks/useWindowSize";
 import Cart from "../cart/Cart";
+import { CartContext } from "../../context/CartContext";
 
 const Navbar = ({ toggleNav, setToggleNav }) => {
   const [showNavItemID, setShowNavItemID] = useState(null);
   const [showCart, setShowCart] = useState(false);
   const { width } = useWindowDimensions();
+  const { cartDetails } = useContext(CartContext);
 
   // console.log(width);
   // console.log(toggleNav);
+
+  console.log(cartDetails);
 
   return (
     <div
@@ -51,7 +55,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
                 {showNavItemID === x.id && (
                   <span
                     className="absolute w-full border-2 border-customOrange left-0"
-                    style={{ top: "55px" }}
+                    style={{ top: "56px" }}
                   ></span>
                 )}
               </li>
@@ -61,7 +65,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
       </div>
       <div className="flex gap-4 items-center">
         <button
-          className="relative flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full"
+          className="relative flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-10 w-10 rounded-full"
           onClick={() => {
             setShowCart(!showCart);
           }}
@@ -74,7 +78,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
         <img
           src={Avatar}
           alt="avatar"
-          className="border-2 border-transparent h-9 w-9 hover:border-customOrange duration-200 cursor-pointer rounded-full"
+          className="border-2 border-transparent h-10 w-10 hover:border-customOrange duration-200 cursor-pointer rounded-full"
         />
       </div>
     </div>
