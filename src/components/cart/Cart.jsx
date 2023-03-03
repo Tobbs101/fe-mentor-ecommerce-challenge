@@ -1,7 +1,27 @@
 import react from "react";
 
-const Cart = () => {
-  return <div className="border border-slate-300 bg-white h-20 w-20"></div>;
+const Cart = ({ width }) => {
+  return (
+    <div
+      className="flex items-center justify-between flex-col right-0 absolute bg-white rounded-lg"
+      style={{
+        height: "200px",
+        width: "350px",
+        top: "70px",
+        boxShadow: "5px 5px 40px 5px #ccc",
+      }}
+    >
+      <div
+        className="w-full py-3 px-5"
+        style={{ borderBottom: "1px solid #e5e5e5" }}
+      >
+        <h1 className="font-bold text-darkBlue">Cart</h1>
+      </div>
+      <div className="flex-1 w-full flex items-center justify-center">
+        <p className="text-slate-400 font-bold">Your cart is empty.</p>
+      </div>
+    </div>
+  );
 };
 
 export default Cart;
