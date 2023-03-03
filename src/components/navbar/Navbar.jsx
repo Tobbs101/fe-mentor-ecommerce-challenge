@@ -16,7 +16,7 @@ const Navbar = () => {
       className="flex py-7 items-center justify-between"
     >
       <div className="flex gap-5 items-center">
-        <img src={Menu} alt="logo" className="w-5 h-4" />
+        <img src={Menu} alt="menu" />
         <img src={Logo} alt="logo" />
         <ul className="flex gap-8 ml-7">
           {categories.map((x, index) => (
