@@ -6,11 +6,12 @@ import Avatar from "../../assets/image-avatar.png";
 import Menu from "../../assets/icon-menu.svg";
 import useWindowDimensions from "../../hooks/useWindowSize";
 
-const Navbar = () => {
+const Navbar = ({ toggleNav, setToggleNav }) => {
   const [showNavItemID, setShowNavItemID] = useState(null);
   const { width } = useWindowDimensions();
 
   console.log(width);
+  console.log(toggleNav);
 
   return (
     <div
@@ -22,6 +23,7 @@ const Navbar = () => {
           <button
             className="cursor-pointer"
             onClick={() => {
+              setToggleNav(!toggleNav);
             }}
           >
             <img src={Menu} alt="menu" />

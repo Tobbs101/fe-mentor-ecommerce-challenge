@@ -6,8 +6,16 @@ import { useState } from "react";
 function App() {
   const [toggleSideNav, setToggleSideNav] = useState(false);
   return (
-    <div style={{ maxWidth: "1440px", margin: "0 auto", position: "relative" }}>
-      <Header />
+    <div
+      style={{
+        maxWidth: "1440px",
+        margin: "0 auto",
+        position: "relative",
+        minHeight: "100vh",
+      }}
+    >
+      <Header toggleNav={toggleSideNav} setToggleNav={setToggleSideNav} />
+      <Sidenav toggleNav={toggleSideNav} />
     </div>
   );
 }
