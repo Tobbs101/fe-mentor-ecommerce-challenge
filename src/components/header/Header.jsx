@@ -8,8 +8,6 @@ import Menu from "../../assets/icon-menu.svg";
 const Navbar = () => {
   const [showNavItemID, setShowNavItemID] = useState(null);
 
-  //   console.log(showNavItemID);
-
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
@@ -34,8 +32,8 @@ const Navbar = () => {
               {x.title}
               {showNavItemID === x.id && (
                 <span
-                  className="absolute w-full border border-customOrange left-0"
-                  style={{ top: "56px" }}
+                  className="absolute w-full border-2 border-customOrange left-0"
+                  style={{ top: "55px" }}
                 ></span>
               )}
             </li>
