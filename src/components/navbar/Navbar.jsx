@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
-      className="flex py-3 items-center justify-between"
+      className="flex py-7 items-center justify-between"
     >
       <div className="flex gap-10">
         <img src={Logo} alt="logo" />
