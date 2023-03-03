@@ -15,10 +15,10 @@ const Navbar = () => {
       style={{ borderBottom: "1px solid #ccc" }}
       className="flex py-7 items-center justify-between"
     >
-      <div className="flex gap-7 items-center">
+      <div className="flex gap-5 items-center">
         <img src={Menu} alt="logo" className="w-5 h-4" />
         <img src={Logo} alt="logo" />
-        <ul className="flex gap-8 ml-5">
+        <ul className="flex gap-8 ml-7">
           {categories.map((x, index) => (
             <li
               key={index}
