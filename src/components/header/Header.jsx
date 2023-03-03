@@ -61,11 +61,14 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
       </div>
       <div className="flex gap-4 items-center">
         <button
-          className="flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full"
+          className="relative flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full"
           onClick={() => {
             setShowCart(!showCart);
           }}
         >
+          <div className="bg-customOrange text-white border border-customOrange h-3 w-6 flex items-center justify-center p-1">
+            <p style={{ fontSize: "10px" }}>3</p>
+          </div>
           <img src={CartIcon} alt="cart" className="" />
         </button>
         <img
