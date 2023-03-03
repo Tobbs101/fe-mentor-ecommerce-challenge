@@ -9,16 +9,26 @@ import useWindowDimensions from "../../hooks/useWindowSize";
 const Navbar = () => {
   const [showNavItemID, setShowNavItemID] = useState(null);
   const { width } = useWindowDimensions();
+  const [toggleSideNav, setToggleSideNav] = useState(false);
 
   console.log(width);
 
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
-      className="relative flex py-7 items-center justify-between px-2"
+      className="relative flex py-7 items-center justify-between px-3"
     >
       <div className="flex gap-5 items-center">
-        {width < 745 && <img src={Menu} alt="menu" />}
+        {width < 745 && (
+          <button
+            className="cursor-pointer"
+            onClick={() => {
+              setToggleSideNav(!toggleSideNav);
+            }}
+          >
+            <img src={Menu} alt="menu" />
+          </button>
+        )}
         <img src={Logo} alt="logo" />
         {width > 744 && (
           <ul className="flex gap-8 ml-7">
@@ -26,7 +36,7 @@ const Navbar = () => {
               <li
                 key={index}
                 value={x.id}
-                className="relative cursor-pointer"
+                className="text-grayishBlue hover:text-darkGrayishBlue relative cursor-pointer"
                 onMouseEnter={(e) => {
                   setShowNavItemID(e.target.value);
                 }}
