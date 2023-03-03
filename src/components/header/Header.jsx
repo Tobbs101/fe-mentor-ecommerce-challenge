@@ -12,15 +12,15 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
   const [showCart, setShowCart] = useState(false);
   const { width } = useWindowDimensions();
 
-  console.log(width);
-  console.log(toggleNav);
+  // console.log(width);
+  // console.log(toggleNav);
 
   return (
     <div
-      style={{ borderBottom: "1px solid #ccc" }}
+      style={{ borderBottom: "1px solid #e5e5e5" }}
       className="relative flex py-7 items-center justify-between px-3"
     >
-      <Cart width={width} />
+      {showCart && <Cart width={width} />}
       <div className="flex gap-5 items-center">
         {width < 745 && (
           <button
@@ -39,7 +39,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
               <li
                 key={index}
                 value={x.id}
-                className="text-grayishBlue hover:text-darkGrayishBlue relative cursor-pointer"
+                className="text-grayishBlue hover:text-darkGrayishBlue hover:font-bold relative cursor-pointer"
                 onMouseEnter={(e) => {
                   setShowNavItemID(e.target.value);
                 }}
@@ -60,9 +60,14 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
         )}
       </div>
       <div className="flex gap-4 items-center">
-        <span className="flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full">
+        <button
+          className="flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full"
+          onClick={() => {
+            setShowCart(!showCart);
+          }}
+        >
           <img src={CartIcon} alt="cart" className="" />
-        </span>
+        </button>
         <img
           src={Avatar}
           alt="avatar"
