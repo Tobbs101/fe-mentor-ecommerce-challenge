@@ -13,7 +13,7 @@ const Items = () => {
           <img
             src={items[activeItemID - 1].item}
             alt="product1"
-            className="rounded-lg"
+            className="rounded-lg cursor-pointer"
           />
         </div>
         <div className="w-full px-20">
