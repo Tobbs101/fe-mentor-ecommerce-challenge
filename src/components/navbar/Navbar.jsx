@@ -3,6 +3,7 @@ import { categories } from "./categories";
 import Logo from "../../assets/logo.svg";
 import Cart from "../../assets/icon-cart.svg";
 import Avatar from "../../assets/image-avatar.png";
+import Menu from "../../assets/icon-menu.svg";
 
 const Navbar = () => {
   const [showNavItemID, setShowNavItemID] = useState(null);
@@ -14,9 +15,10 @@ const Navbar = () => {
       style={{ borderBottom: "1px solid #ccc" }}
       className="flex py-7 items-center justify-between"
     >
-      <div className="flex gap-10">
+      <div className="flex gap-7 items-center">
+        <img src={Menu} alt="logo" className="w-5 h-4" />
         <img src={Logo} alt="logo" />
-        <ul className="flex gap-8">
+        <ul className="flex gap-8 ml-5">
           {categories.map((x, index) => (
             <li
               key={index}
