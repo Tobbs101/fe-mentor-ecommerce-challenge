@@ -3,11 +3,12 @@ import react from "react";
 const Cart = ({ width }) => {
   return (
     <div
-      className="flex items-center justify-between flex-col right-0 absolute bg-white rounded-lg"
+      className="flex items-center justify-between flex-col absolute bg-white rounded-lg"
       style={{
-        height: "200px",
-        width: "350px",
-        top: "70px",
+        height: "230px",
+        width: width > 744 ? "370px" : width - 20,
+        right: width > 1440 ? "0px" : "10px",
+        top: width > 744 ? "75px" : "105px",
         boxShadow: "5px 5px 40px 5px #ccc",
       }}
     >
