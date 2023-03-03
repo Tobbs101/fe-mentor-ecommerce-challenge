@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { categories } from "./categories";
 import Logo from "../../assets/logo.svg";
-import Cart from "../../assets/icon-cart.svg";
+import CartIcon from "../../assets/icon-cart.svg";
 import Avatar from "../../assets/image-avatar.png";
 import Menu from "../../assets/icon-menu.svg";
 import useWindowDimensions from "../../hooks/useWindowSize";
@@ -58,9 +58,8 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
       </div>
       <div className="flex gap-4 items-center">
         <span className="flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full">
-          <img src={Cart} alt="cart" className="" />
+          <img src={CartIcon} alt="cart" className="" />
         </span>
-
         <img
           src={Avatar}
           alt="avatar"
