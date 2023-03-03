@@ -15,34 +15,36 @@ const Navbar = () => {
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
-      className="flex py-7 items-center justify-between px-2"
+      className="relative flex py-7 items-center justify-between px-2"
     >
       <div className="flex gap-5 items-center">
-        <img src={Menu} alt="menu" />
+        {width < 745 && <img src={Menu} alt="menu" />}
         <img src={Logo} alt="logo" />
-        <ul className="flex gap-8 ml-7">
-          {categories.map((x, index) => (
-            <li
-              key={index}
-              value={x.id}
-              className="relative cursor-pointer"
-              onMouseEnter={(e) => {
-                setShowNavItemID(e.target.value);
-              }}
-              onMouseLeave={() => {
-                setShowNavItemID(null);
-              }}
-            >
-              {x.title}
-              {showNavItemID === x.id && (
-                <span
-                  className="absolute w-full border-2 border-customOrange left-0"
-                  style={{ top: "55px" }}
-                ></span>
-              )}
-            </li>
-          ))}
-        </ul>
+        {width > 744 && (
+          <ul className="flex gap-8 ml-7">
+            {categories.map((x, index) => (
+              <li
+                key={index}
+                value={x.id}
+                className="relative cursor-pointer"
+                onMouseEnter={(e) => {
+                  setShowNavItemID(e.target.value);
+                }}
+                onMouseLeave={() => {
+                  setShowNavItemID(null);
+                }}
+              >
+                {x.title}
+                {showNavItemID === x.id && (
+                  <span
+                    className="absolute w-full border-2 border-customOrange left-0"
+                    style={{ top: "55px" }}
+                  ></span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="flex gap-6 items-center">
         <span className="flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full">
