@@ -56,7 +56,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
           </ul>
         )}
       </div>
-      <div className="flex gap-6 items-center">
+      <div className="flex gap-4 items-center">
         <span className="flex items-center justify-center cursor-pointer hover:bg-slate-100 border border-transparent hover:border-slate-100 h-9 w-9 rounded-full">
           <img src={Cart} alt="cart" className="" />
         </span>
