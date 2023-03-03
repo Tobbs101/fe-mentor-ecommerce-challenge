@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { categories } from "./categories";
 import Logo from "../../assets/logo.svg";
 import Cart from "../../assets/icon-cart.svg";
 import Avatar from "../../assets/image-avatar.png";
 
 const Navbar = () => {
+  const [showNavItemID, setShowNavItemID] = useState(null);
+
+  //   console.log(showNavItemID);
+
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
@@ -14,8 +18,24 @@ const Navbar = () => {
         <img src={Logo} alt="logo" />
         <ul className="flex gap-8">
           {categories.map((x, index) => (
-            <li key={index} className="cursor-pointer">
+            <li
+              key={index}
+              value={x.id}
+              className="relative cursor-pointer"
+              onMouseEnter={(e) => {
+                setShowNavItemID(e.target.value);
+              }}
+              onMouseLeave={() => {
+                setShowNavItemID(null);
+              }}
+            >
               {x.title}
+              {showNavItemID === x.id && (
+                <span
+                  className="absolute w-full border border-customOrange left-0"
+                  style={{ top: "56px" }}
+                ></span>
+              )}
             </li>
           ))}
         </ul>
@@ -25,7 +45,7 @@ const Navbar = () => {
         <img
           src={Avatar}
           alt="avatar"
-          className="border border-transparent h-8 w-8 hover:border-customOrange duration-200 cursor-pointer rounded-full"
+          className="border border-transparent h-9 w-9 hover:border-customOrange duration-200 cursor-pointer rounded-full"
         />
       </div>
     </div>
