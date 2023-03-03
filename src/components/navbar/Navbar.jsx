@@ -1,8 +1,8 @@
 import React from "react";
 import { categories } from "./categories";
 import Logo from "../../assets/logo.svg";
-
-console.log(categories);
+import Cart from "../../assets/icon-cart.svg";
+import Avatar from "../../assets/image-avatar.png";
 
 const Navbar = () => {
   return (
@@ -14,12 +14,19 @@ const Navbar = () => {
         <img src={Logo} alt="logo" />
         <ul className="flex gap-8">
           {categories.map((x, index) => (
-            <li key={index}>{x.title}</li>
+            <li key={index} className="cursor-pointer">
+              {x.title}
+            </li>
           ))}
         </ul>
       </div>
-      <div>
-        <p className="text-customOrange">Cart</p>
+      <div className="flex gap-6 items-center">
+        <img src={Cart} alt="cart" className="h-6 w-6 cursor-pointer" />
+        <img
+          src={Avatar}
+          alt="avatar"
+          className="border border-transparent h-8 w-8 hover:border-customOrange duration-200 cursor-pointer rounded-full"
+        />
       </div>
     </div>
   );
