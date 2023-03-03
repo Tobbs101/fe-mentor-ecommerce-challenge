@@ -5,9 +5,11 @@ import CartIcon from "../../assets/icon-cart.svg";
 import Avatar from "../../assets/image-avatar.png";
 import Menu from "../../assets/icon-menu.svg";
 import useWindowDimensions from "../../hooks/useWindowSize";
+import Cart from "../cart/Cart";
 
 const Navbar = ({ toggleNav, setToggleNav }) => {
   const [showNavItemID, setShowNavItemID] = useState(null);
+  const [showCart, setShowCart] = useState(false);
   const { width } = useWindowDimensions();
 
   console.log(width);
@@ -16,8 +18,9 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
-      className="flex py-7 items-center justify-between px-3"
+      className="relative flex py-7 items-center justify-between px-3"
     >
+      <Cart width={width} />
       <div className="flex gap-5 items-center">
         {width < 745 && (
           <button
@@ -63,7 +66,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
         <img
           src={Avatar}
           alt="avatar"
-          className="border border-transparent h-9 w-9 hover:border-customOrange duration-200 cursor-pointer rounded-full"
+          className="border-2 border-transparent h-9 w-9 hover:border-customOrange duration-200 cursor-pointer rounded-full"
         />
       </div>
     </div>
