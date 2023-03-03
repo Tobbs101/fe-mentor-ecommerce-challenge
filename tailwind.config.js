@@ -11,6 +11,8 @@ module.exports = {
         lightGrayishBlue: "hsl(223, 64%, 98%)",
         customWhite: "hsl(0, 0%, 100%)",
         customBlack: "hsl(0, 0%, 0%)",
+        customOrange: "hsl(26, 100%, 55%)",
+        paleOrange: "hsl(25, 100%, 94%)",
       },
     },
   },
