@@ -8,10 +8,19 @@ const Navbar = () => {
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
-      className="text-customOrange flex py-3"
+      className="flex py-3 items-center justify-between"
     >
-      <img src={Logo} />
-      Navbar
+      <div className="flex gap-10">
+        <img src={Logo} alt="logo" />
+        <ul className="flex gap-8">
+          {categories.map((x, index) => (
+            <li key={index}>{x.title}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p className="text-customOrange">Cart</p>
+      </div>
     </div>
   );
 };
