@@ -1,34 +1,67 @@
 import React, { useState } from "react";
 import { items } from "./cartItems";
 import useWindowDimensions from "../../hooks/useWindowSize";
+import Prev from "../../assets/icon-previous.svg";
+import Next from "../../assets/icon-next.svg";
 
 const Items = () => {
   const [activeItemID, setActiveItemID] = useState(1);
   const { width } = useWindowDimensions();
 
-  //   console.log(activeItemID);
+  console.log(activeItemID);
   console.log(width);
 
   return (
     <div
       className={
         width > 650
-          ? "flex items-center justify-between w-full border border-red-500"
-          : "flex items-center justify-between w-full border border-red-500 flex-col"
+          ? "flex items-center justify-between w-full"
+          : "flex items-center justify-between w-full flex-col"
       }
     >
       <div
         className={
-          width > 1200
-            ? "flex items-center justify-between flex-col flex-1 border border-green-500"
-            : "flex items-center justify-between flex-col flex-1 border border-green-500 p-2"
+          width > 650
+            ? "flex items-center justify-between flex-col flex-1 p-2"
+            : "flex items-center justify-between flex-col flex-1"
         }
       >
-        <div className={width > 1200 ? "flex-1 px-20 py-5" : "flex-1"}>
+        <div
+          className={
+            width > 1200 ? "relative flex-1 px-20 py-5" : "relative flex-1"
+          }
+        >
+          {width < 651 && (
+            <div
+              className="w-full absolute flex items-center justify-between px-2"
+              style={{ top: "50%", transform: "translateY(-50%)" }}
+            >
+              <button
+                className="bg-white h-12 w-12 rounded-full flex items-center justify-center"
+                disabled={activeItemID === 1 ? true : false}
+                onClick={() => {
+                  setActiveItemID(activeItemID - 1);
+                }}
+              >
+                <img src={Prev} alt="previous" className="mr-1" />
+              </button>
+              <button
+                className="bg-white h-12 w-12 rounded-full flex items-center justify-center"
+                disabled={activeItemID === items.length ? true : false}
+                onClick={() => {
+                  setActiveItemID(activeItemID + 1);
+                }}
+              >
+                <img src={Next} alt="next" className="ml-1" />
+              </button>
+            </div>
+          )}
           <img
             src={items[activeItemID - 1].item}
             alt="product1"
-            className="rounded-lg cursor-pointer"
+            className={
+              width > 650 ? "rounded-lg cursor-pointer" : "cursor-pointer"
+            }
           />
         </div>
         {width > 650 && (

@@ -10,6 +10,7 @@ const Cart = ({ width }) => {
         right: width > 1440 ? "0px" : "10px",
         top: width > 744 ? "75px" : "105px",
         boxShadow: "5px 5px 40px 5px #ccc",
+        zIndex: "100",
       }}
     >
       <div
