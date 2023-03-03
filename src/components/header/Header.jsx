@@ -9,21 +9,19 @@ import useWindowDimensions from "../../hooks/useWindowSize";
 const Navbar = () => {
   const [showNavItemID, setShowNavItemID] = useState(null);
   const { width } = useWindowDimensions();
-  const [toggleSideNav, setToggleSideNav] = useState(false);
 
   console.log(width);
 
   return (
     <div
       style={{ borderBottom: "1px solid #ccc" }}
-      className="relative flex py-7 items-center justify-between px-3"
+      className="flex py-7 items-center justify-between px-3"
     >
       <div className="flex gap-5 items-center">
         {width < 745 && (
           <button
             className="cursor-pointer"
             onClick={() => {
-              setToggleSideNav(!toggleSideNav);
             }}
           >
             <img src={Menu} alt="menu" />
