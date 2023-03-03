@@ -7,7 +7,7 @@ const Items = () => {
   console.log(activeItemID);
 
   return (
-    <div className="flex items-center justify-between w-full border border-red-500">
+    <div className="flex items-center justify-between w-full">
       <div className="flex items-center justify-between flex-col flex-1">
         <div className="flex-1 px-20 py-5">
           <img
@@ -21,12 +21,20 @@ const Items = () => {
             {items.map((x) => (
               <li
                 key={x.id}
-                className="rounded-lg overflow-hidden cursor-pointer"
+                className={
+                  activeItemID === x.id
+                    ? "rounded-lg overflow-hidden cursor-pointer border-2 border-customOrange"
+                    : "rounded-lg overflow-hidden cursor-pointer border-2 border-transparent"
+                }
                 onClick={() => {
                   setActiveItemID(x.id);
                 }}
               >
-                <img src={x.thumbNail} alt={"thumbnail" + x.id} />
+                <img
+                  src={x.thumbNail}
+                  alt={"thumbnail" + x.id}
+                  style={{ opacity: activeItemID === x.id ? "0.4" : "1" }}
+                />
               </li>
             ))}
           </ul>
