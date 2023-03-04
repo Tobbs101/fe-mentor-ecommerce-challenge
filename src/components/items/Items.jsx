@@ -5,7 +5,7 @@ import Prev from "../../assets/icon-previous.svg";
 import Next from "../../assets/icon-next.svg";
 import Plus from "../../assets/icon-plus.svg";
 import Minus from "../../assets/icon-minus.svg";
-import CartIcon from "../../assets/icon-cart.svg";
+import CartIcon from "../../assets/icon-cart-white.svg";
 
 const Items = () => {
   const [activeItemID, setActiveItemID] = useState(1);
@@ -93,8 +93,13 @@ const Items = () => {
           </div>
         )}
       </div>
-      <div className="flex-1 border border-red-500" style={{ width: "20%" }}>
-        <div className="border border-blue-500" style={{ width: "60%" }}>
+      <div className="flex-1 p-2">
+        <div
+          style={{
+            width: width > 1200 ? "60%" : "100%",
+            padding: width > 1200 ? "0px" : "10px",
+          }}
+        >
           <p
             className="text-customOrange font-bold mb-3"
             style={{ fontSize: "10px" }}
@@ -124,17 +129,32 @@ const Items = () => {
           >
             $250.00
           </p>
-          <div className="flex mt-5 items-center gap-3">
-            <div className="flex bg-lightGrayishBlue rounded">
-              <button className="py-2 px-3">
+          <div
+            className={
+              width > 650
+                ? "flex mt-5 items-center gap-3"
+                : "flex mt-5 items-center gap-3 flex-col"
+            }
+          >
+            <div
+              className={
+                width > 650
+                  ? "flex bg-lightGrayishBlue rounded"
+                  : "w-full flex bg-lightGrayishBlue rounded"
+              }
+            >
+              <button className="flex items-center justify-center py-2 px-3 flex-1">
                 <img src={Minus} alt="minus" />
               </button>
               <p className="py-2 px-7 font-bold text-sm text-darkBlue">0</p>
-              <button className="py-2 px-3">
+              <button className="flex items-center justify-center py-2 px-3 flex-1">
                 <img src={Plus} alt="plus" />
               </button>
             </div>
-            <button className="flex-1 bg-customOrange border border-customOrange py-2 px-7 rounded flex items-center justify-center text-white gap-2">
+            <button
+              className="w-full flex-1 bg-customOrange border border-customOrange py-2 px-7 rounded flex items-center justify-center text-white gap-2"
+              style={{ boxShadow: "0 0 7px 0 #ccc" }}
+            >
               <img
                 src={CartIcon}
                 alt="cart-icon"
