@@ -90,8 +90,43 @@ const Items = () => {
           </div>
         )}
       </div>
-      <div className="flex-1">
-        <p>SNEAKER COMPANY</p>
+      <div className="flex-1 border border-red-500" style={{ width: "20%" }}>
+        <div className="border border-blue-500" style={{ width: "60%" }}>
+          <p className="text-customOrange text-xs font-bold mb-3">
+            SNEAKER COMPANY
+          </p>
+          <h1 className="text-darkBlue text-4xl font-bold mb-8">
+            Fall Limited Edition Sneakers
+          </h1>
+          <span className="text-xs text-customGray">
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they'll withstand everything
+            the weather can offer.
+          </span>
+          <div className="flex mt-4 items-center gap-2">
+            <p className="text-darkBlue font-bold text-xl">$125.00</p>
+            <p
+              className="bg-paleOrange text-customOrange font-bold px-1 rounded"
+              style={{ fontSize: "11px" }}
+            >
+              50%
+            </p>
+          </div>
+          <p
+            className="mt-1 line-through text-grayishBlue"
+            style={{ fontSize: "11px" }}
+          >
+            $250.00
+          </p>
+          <div className="flex mt-5 items-center gap-1">
+            <div className="flex">
+              <button>plus</button>
+              <p>0</p>
+              <button>next</button>
+            </div>
+            <button>Add to cart</button>
+          </div>
+        </div>
       </div>
     </div>
   );

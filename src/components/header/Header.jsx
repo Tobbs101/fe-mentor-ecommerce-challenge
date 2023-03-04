@@ -43,7 +43,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
               <li
                 key={index}
                 value={x.id}
-                className="text-grayishBlue hover:text-darkGrayishBlue hover:font-bold relative cursor-pointer"
+                className="text-customGray hover:text-darkBlue relative cursor-pointer"
                 onMouseEnter={(e) => {
                   setShowNavItemID(e.target.value);
                 }}
