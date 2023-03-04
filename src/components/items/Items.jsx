@@ -3,6 +3,9 @@ import { items } from "./cartItems";
 import useWindowDimensions from "../../hooks/useWindowSize";
 import Prev from "../../assets/icon-previous.svg";
 import Next from "../../assets/icon-next.svg";
+import Plus from "../../assets/icon-plus.svg";
+import Minus from "../../assets/icon-minus.svg";
+import CartIcon from "../../assets/icon-cart.svg";
 
 const Items = () => {
   const [activeItemID, setActiveItemID] = useState(1);
@@ -92,7 +95,10 @@ const Items = () => {
       </div>
       <div className="flex-1 border border-red-500" style={{ width: "20%" }}>
         <div className="border border-blue-500" style={{ width: "60%" }}>
-          <p className="text-customOrange text-xs font-bold mb-3">
+          <p
+            className="text-customOrange font-bold mb-3"
+            style={{ fontSize: "10px" }}
+          >
             SNEAKER COMPANY
           </p>
           <h1 className="text-darkBlue text-4xl font-bold mb-8">
@@ -119,12 +125,23 @@ const Items = () => {
             $250.00
           </p>
           <div className="flex mt-5 items-center gap-1">
-            <div className="flex">
-              <button>plus</button>
-              <p>0</p>
-              <button>next</button>
+            <div className="flex bg-lightGrayishBlue rounded">
+              <button className="py-2 px-3">
+                <img src={Minus} alt="minus" />
+              </button>
+              <p className="py-2 px-7 font-bold text-sm text-darkBlue">0</p>
+              <button className="py-2 px-3">
+                <img src={Plus} alt="plus" />
+              </button>
             </div>
-            <button>Add to cart</button>
+            <button className="flex-1 bg-customOrange border border-customOrange py-2 px-7 rounded flex items-center justify-center text-white gap-2">
+              <img
+                src={CartIcon}
+                alt="cart-icon"
+                className="w-3 h-3 fill-white"
+              />
+              <p className="text-xs">Add to cart</p>
+            </button>
           </div>
         </div>
       </div>
