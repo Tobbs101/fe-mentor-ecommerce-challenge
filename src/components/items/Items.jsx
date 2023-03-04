@@ -124,7 +124,7 @@ const Items = () => {
           >
             $250.00
           </p>
-          <div className="flex mt-5 items-center gap-1">
+          <div className="flex mt-5 items-center gap-3">
             <div className="flex bg-lightGrayishBlue rounded">
               <button className="py-2 px-3">
                 <img src={Minus} alt="minus" />
