@@ -9,6 +9,7 @@ import Items from "./components/items/Items";
 
 function App() {
   const [toggleSideNav, setToggleSideNav] = useState(false);
+  const [toggleBackDrop, setToggleBackDrop] = useState(false);
   const { width } = useWindowDimensions();
   const [cartDetails, setCartDetails] = useState({});
   return (
@@ -22,9 +23,17 @@ function App() {
         }}
       >
         {width < 745 && toggleSideNav && <BackDrop />}
-        <Header toggleNav={toggleSideNav} setToggleNav={setToggleSideNav} />
+        <Header
+          toggleNav={toggleSideNav}
+          setToggleNav={setToggleSideNav}
+          setToggleBackDrop={setToggleBackDrop}
+        />
         {width < 745 && toggleSideNav && (
-          <SideNav toggleNav={toggleSideNav} setToggleNav={setToggleSideNav} />
+          <SideNav
+            toggleNav={toggleSideNav}
+            setToggleNav={setToggleSideNav}
+            setToggleBackDrop={setToggleBackDrop}
+          />
         )}
         <Items />
       </div>
