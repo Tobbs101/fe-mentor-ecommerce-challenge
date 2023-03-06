@@ -9,17 +9,17 @@ import Minus from "../../assets/icon-minus.svg";
 import CartIcon from "../../assets/icon-cart-white.svg";
 import { CartContext } from "../../context/CartContext";
 
-const Items = () => {
+const Items = React.memo(() => {
   const [activeItemID, setActiveItemID] = useState(1);
   const { width } = useWindowDimensions();
   const { cartDetails, setCartDetails } = useContext(CartContext);
   const [itemQuantity, setItemQuantity] = useState(0);
 
-  console.log(activeItemID);
-  console.log(width);
-  console.log(item);
+  // console.log(activeItemID);
+  // console.log(width);
+  // console.log(item);
 
-  console.log(cartDetails);
+  // console.log(cartDetails);
 
   return (
     <div
@@ -186,6 +186,6 @@ const Items = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Items;

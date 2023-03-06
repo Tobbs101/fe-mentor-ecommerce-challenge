@@ -8,7 +8,7 @@ import useWindowDimensions from "../../hooks/useWindowSize";
 import Cart from "../cart/Cart";
 import { CartContext } from "../../context/CartContext";
 
-const Navbar = ({ toggleNav, setToggleNav }) => {
+const Navbar = React.memo(({ toggleNav, setToggleNav }) => {
   const [showNavItemID, setShowNavItemID] = useState(null);
   const [showCart, setShowCart] = useState(false);
   const { width } = useWindowDimensions();
@@ -85,6 +85,6 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Navbar;
