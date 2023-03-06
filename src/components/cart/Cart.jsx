@@ -59,9 +59,14 @@ const Cart = ({ width, setShowCart }) => {
               >
                 <p className="text-customGray">{cartDetails.name}</p>
                 <div className="text-customGray">
-                  ${cartDetails.price}.00 x {cartDetails.itemQuantity}{" "}
-                  <b className="text-darkBlue">
-                    ${cartDetails.itemQuantity * cartDetails.price}.00
+                  ${cartDetails.price}.00 x {cartDetails.itemQuantity}
+                  {"  "}
+                  <b className="text-darkBlue ml-1">
+                    $
+                    {(
+                      cartDetails.itemQuantity * cartDetails.price
+                    ).toLocaleString()}
+                    .00
                   </b>
                 </div>
               </div>
