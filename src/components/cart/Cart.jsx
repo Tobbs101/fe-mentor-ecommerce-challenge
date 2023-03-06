@@ -1,10 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
 import { items } from "../items/cartItems";
 import Delete from "../../assets/icon-delete.svg";
 
-const Cart = ({ width }) => {
+const Cart = ({ width, setShowCart }) => {
+  function ClickAlerter(ref) {
+    useEffect(() => {
+      function handleOutsideClick(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowCart(false);
+        }
+      }
+      document.addEventListener("mousedown", handleOutsideClick);
+      return () => {
+        document.removeEventListener("mousedown", handleOutsideClick);
+      };
+    }, [ref]);
+  }
+
   const { cartDetails } = useContext(CartContext);
+  const wrapperRef = useRef(null);
+  ClickAlerter(wrapperRef);
 
   console.log(cartDetails);
 
@@ -20,6 +36,7 @@ const Cart = ({ width }) => {
           boxShadow: "5px 5px 40px 5px #ccc",
           zIndex: "100",
         }}
+        ref={wrapperRef}
       >
         <div
           className="w-full py-3 px-5"

@@ -24,7 +24,7 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
       style={{ borderBottom: "1px solid #e5e5e5" }}
       className="relative flex py-7 items-center justify-between px-3"
     >
-      {showCart && <Cart width={width} />}
+      {showCart && <Cart width={width} setShowCart={setShowCart} />}
       <div className="flex gap-5 items-center">
         {width < 745 && (
           <button
