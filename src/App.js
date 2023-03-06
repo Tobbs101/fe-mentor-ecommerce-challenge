@@ -10,7 +10,7 @@ import Items from "./components/items/Items";
 function App() {
   const [toggleSideNav, setToggleSideNav] = useState(false);
   const { width } = useWindowDimensions();
-  const [cartDetails, setCartDetails] = useState([]);
+  const [cartDetails, setCartDetails] = useState({});
   return (
     <CartContext.Provider value={{ cartDetails, setCartDetails }}>
       <div

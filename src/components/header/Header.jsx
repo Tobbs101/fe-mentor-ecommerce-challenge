@@ -70,9 +70,11 @@ const Navbar = ({ toggleNav, setToggleNav }) => {
             setShowCart(!showCart);
           }}
         >
-          <div className="absolute top-1 right-0 bg-customOrange text-white border border-customOrange h-3 w-4 flex items-center justify-center p-1 rounded-lg">
-            <p style={{ fontSize: "10px" }}>3</p>
-          </div>
+          {cartDetails.itemQuantity > 0 && (
+            <div className="absolute top-1 right-0 bg-customOrange text-white border border-customOrange h-3 w-4 flex items-center justify-center p-1 rounded-lg">
+              <p style={{ fontSize: "10px" }}>{cartDetails.itemQuantity}</p>
+            </div>
+          )}
           <img src={CartIcon} alt="cart" className="" />
         </button>
         <img

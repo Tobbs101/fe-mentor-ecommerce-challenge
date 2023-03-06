@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const Cart = ({ width }) => {
+  const { cartDetails } = useContext(CartContext);
+
+  console.log(cartDetails);
+
   return (
     <div
       className="flex items-center justify-between flex-col absolute bg-white rounded-lg"

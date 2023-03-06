@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { items } from "./cartItems";
+import { item } from "./Item";
 import useWindowDimensions from "../../hooks/useWindowSize";
 import Prev from "../../assets/icon-previous.svg";
 import Next from "../../assets/icon-next.svg";
 import Plus from "../../assets/icon-plus.svg";
 import Minus from "../../assets/icon-minus.svg";
 import CartIcon from "../../assets/icon-cart-white.svg";
+import { CartContext } from "../../context/CartContext";
 
 const Items = () => {
   const [activeItemID, setActiveItemID] = useState(1);
   const { width } = useWindowDimensions();
+  const { cartDetails, setCartDetails } = useContext(CartContext);
+  const [itemQuantity, setItemQuantity] = useState(0);
 
   console.log(activeItemID);
   console.log(width);
+  console.log(item);
+
+  console.log(cartDetails);
 
   return (
     <div
@@ -106,28 +113,22 @@ const Items = () => {
           >
             SNEAKER COMPANY
           </p>
-          <h1 className="text-darkBlue text-4xl font-bold mb-8">
-            Fall Limited Edition Sneakers
-          </h1>
-          <span className="text-xs text-customGray">
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they'll withstand everything
-            the weather can offer.
-          </span>
+          <h1 className="text-darkBlue text-4xl font-bold mb-8">{item.name}</h1>
+          <span className="text-xs text-customGray">{item.desc}</span>
           <div className="flex mt-4 items-center gap-2">
-            <p className="text-darkBlue font-bold text-xl">$125.00</p>
+            <p className="text-darkBlue font-bold text-xl">${item.price}.00</p>
             <p
               className="bg-paleOrange text-customOrange font-bold px-1 rounded"
               style={{ fontSize: "11px" }}
             >
-              50%
+              {item.discount}%
             </p>
           </div>
           <p
             className="mt-1 line-through text-grayishBlue"
             style={{ fontSize: "11px" }}
           >
-            $250.00
+            ${item.original_price}.00
           </p>
           <div
             className={
@@ -143,17 +144,35 @@ const Items = () => {
                   : "w-full flex bg-lightGrayishBlue rounded"
               }
             >
-              <button className="flex items-center justify-center py-2 px-3 flex-1">
+              <button
+                className="flex items-center justify-center py-2 px-3 flex-1"
+                disabled={itemQuantity === 0 ? true : false}
+                onClick={() => {
+                  setItemQuantity(itemQuantity - 1);
+                }}
+              >
                 <img src={Minus} alt="minus" />
               </button>
-              <p className="py-2 px-7 font-bold text-sm text-darkBlue">0</p>
-              <button className="flex items-center justify-center py-2 px-3 flex-1">
+              <p className="py-2 w-20 text-center font-bold text-sm text-darkBlue">
+                {itemQuantity}
+              </p>
+              <button
+                className="flex items-center justify-center py-2 px-3 flex-1"
+                onClick={() => {
+                  setItemQuantity(itemQuantity + 1);
+                }}
+              >
                 <img src={Plus} alt="plus" />
               </button>
             </div>
             <button
               className="w-full flex-1 bg-customOrange border border-customOrange py-2 px-7 rounded flex items-center justify-center text-white gap-2"
               style={{ boxShadow: "0 0 7px 0 #ccc" }}
+              onClick={() => {
+                setCartDetails((prev) => {
+                  return { ...prev, ...item, itemQuantity: itemQuantity };
+                });
+              }}
             >
               <img
                 src={CartIcon}
