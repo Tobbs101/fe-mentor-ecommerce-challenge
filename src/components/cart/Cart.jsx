@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { items } from "../items/cartItems";
+import Delete from "../../assets/icon-delete.svg";
 
 const Cart = ({ width }) => {
   const { cartDetails } = useContext(CartContext);
@@ -12,7 +13,7 @@ const Cart = ({ width }) => {
       <div
         className="flex items-start justify-center flex-col absolute bg-white rounded-lg"
         style={{
-          height: "230px",
+          minHeight: "200px",
           width: width > 744 ? "370px" : width - 20,
           right: width > 1440 ? "0px" : "10px",
           top: width > 744 ? "75px" : "105px",
@@ -28,24 +29,31 @@ const Cart = ({ width }) => {
         </div>
         <div className="flex-1 w-full flex flex-col items-start p-5 justify-between">
           <div className="w-full flex items-center justify-between">
-            <img
-              src={items[0].thumbNail}
-              alt="item"
-              className="w-auto rounded-lg"
-              style={{ height: "55px" }}
-            />
-            <span
-              className=" px-1 flex flex-col items-start justify-between border border-red-400"
-              style={{ height: "55px" }}
-            >
-              <p>{cartDetails.name}</p>
-              <p>
-                ${cartDetails.price}.00 x {cartDetails.itemQuantity}{" "}
-                {cartDetails.itemQuantity * cartDetails.price}.00
-              </p>
-            </span>
+            <div className="flex items-center gap-1">
+              <img
+                src={items[0].thumbNail}
+                alt="item"
+                className="w-auto rounded-lg"
+                style={{ height: "55px" }}
+              />
+              <div
+                className=" px-1 flex flex-col items-start justify-between"
+                style={{ height: "55px" }}
+              >
+                <p className="text-customGray">{cartDetails.name}</p>
+                <div className="text-customGray">
+                  ${cartDetails.price}.00 x {cartDetails.itemQuantity}{" "}
+                  <b className="text-darkBlue">
+                    ${cartDetails.itemQuantity * cartDetails.price}.00
+                  </b>
+                </div>
+              </div>
+            </div>
+            <img src={Delete} alt="delete" className="cursor-pointer" />
           </div>
-          <button>Checkout</button>
+          <button className="w-full bg-customOrange border border-customOrange rounded-md text-xs text-white py-3">
+            Checkout
+          </button>
         </div>
       </div>
     );
@@ -55,7 +63,7 @@ const Cart = ({ width }) => {
     <div
       className="flex items-center justify-between flex-col absolute bg-white rounded-lg"
       style={{
-        height: "230px",
+        minHeight: "200px",
         width: width > 744 ? "370px" : width - 20,
         right: width > 1440 ? "0px" : "10px",
         top: width > 744 ? "75px" : "105px",
