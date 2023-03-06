@@ -11,6 +11,7 @@ import { CartContext } from "../../context/CartContext";
 
 const Items = React.memo(() => {
   const [activeItemID, setActiveItemID] = useState(1);
+  const [hoverItemID, setHoverItemID] = useState(null);
   const { width } = useWindowDimensions();
   const { cartDetails, setCartDetails } = useContext(CartContext);
   const [itemQuantity, setItemQuantity] = useState(0);
@@ -88,11 +89,24 @@ const Items = React.memo(() => {
                   onClick={() => {
                     setActiveItemID(x.id);
                   }}
+                  onMouseEnter={() => {
+                    setHoverItemID(x.id);
+                  }}
+                  onMouseLeave={() => {
+                    setHoverItemID(null);
+                  }}
                 >
                   <img
                     src={x.thumbNail}
                     alt={"thumbnail" + x.id}
-                    style={{ opacity: activeItemID === x.id ? "0.4" : "1" }}
+                    style={{
+                      opacity:
+                        activeItemID === x.id
+                          ? "0.4"
+                          : hoverItemID === x.id
+                          ? "0.6"
+                          : "1",
+                    }}
                   />
                 </li>
               ))}
