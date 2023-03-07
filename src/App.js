@@ -10,8 +10,12 @@ import Items from "./components/items/Items";
 function App() {
   const [toggleSideNav, setToggleSideNav] = useState(false);
   const [toggleBackDrop, setToggleBackDrop] = useState(false);
+  const [imgBackDrop, setImgBackDrop] = useState(false);
   const { width } = useWindowDimensions();
   const [cartDetails, setCartDetails] = useState({});
+  console.log(toggleBackDrop);
+  console.log("img", imgBackDrop);
+
   return (
     <CartContext.Provider value={{ cartDetails, setCartDetails }}>
       <div
@@ -22,20 +26,22 @@ function App() {
           minHeight: "100vh",
         }}
       >
-        {width < 745 && toggleSideNav && <BackDrop />}
+        {width < 745 && toggleBackDrop && <BackDrop />}
         <Header
           toggleNav={toggleSideNav}
           setToggleNav={setToggleSideNav}
+          toggleBackDrop={toggleBackDrop}
           setToggleBackDrop={setToggleBackDrop}
         />
         {width < 745 && toggleSideNav && (
           <SideNav
             toggleNav={toggleSideNav}
             setToggleNav={setToggleSideNav}
+            toggleBackDrop={toggleBackDrop}
             setToggleBackDrop={setToggleBackDrop}
           />
         )}
-        <Items />
+        <Items imgBackDrop={imgBackDrop} setImgBackDrop={setImgBackDrop} />
       </div>
     </CartContext.Provider>
   );

@@ -18,7 +18,7 @@ const Cart = ({ width, setShowCart }) => {
     }, [ref]);
   }
 
-  const { cartDetails } = useContext(CartContext);
+  const { cartDetails, setCartDetails } = useContext(CartContext);
   const wrapperRef = useRef(null);
   ClickAlerter(wrapperRef);
 
@@ -71,7 +71,13 @@ const Cart = ({ width, setShowCart }) => {
                 </div>
               </div>
             </div>
-            <img src={Delete} alt="delete" className="cursor-pointer" />
+            <button
+              onClick={() => {
+                setCartDetails({});
+              }}
+            >
+              <img src={Delete} alt="delete" className="cursor-pointer" />
+            </button>
           </div>
           <button className="w-full bg-customOrange border border-customOrange rounded-md text-xs text-white py-3">
             Checkout

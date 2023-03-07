@@ -220,7 +220,7 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
       )}
       {imgModal && width > 650 && (
         <div
-          className="bg-white border border-red-500 absolute"
+          className="bg-transparent absolute"
           style={{
             top: "50%",
             left: "50%",
@@ -257,7 +257,11 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
               }
             >
               <div
-                className={width >"w-full absolute flex items-center justify-between px-12"
+                className={
+                  width > 1200
+                    ? "w-full absolute flex items-center justify-between px-12"
+                    : "w-full absolute flex items-center justify-between"
+                }
                 style={{
                   top: "50%",
                   left: "50%",
