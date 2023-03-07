@@ -7,7 +7,6 @@ import Next from "../../assets/icon-next.svg";
 import Plus from "../../assets/icon-plus.svg";
 import Minus from "../../assets/icon-minus.svg";
 import CartIcon from "../../assets/icon-cart-white.svg";
-import Close from "../../assets/icon-close.svg";
 import CloseWhite from "../../assets/icon-close-white.svg";
 import { CartContext } from "../../context/CartContext";
 
@@ -15,7 +14,7 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
   const [activeItemID, setActiveItemID] = useState(1);
   const [hoverItemID, setHoverItemID] = useState(null);
   const { width } = useWindowDimensions();
-  const { cartDetails, setCartDetails } = useContext(CartContext);
+  const { setCartDetails } = useContext(CartContext);
   const [itemQuantity, setItemQuantity] = useState(0);
   const [imgModal, showImgModal] = useState(false);
 
