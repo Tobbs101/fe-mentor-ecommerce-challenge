@@ -261,13 +261,14 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
               <div
                 className={
                   width > 1200
-                    ? "w-full flex absolute items-center justify-between border border-green-500"
-                    : "w-full flex absolute items-center justify-between border border-green-500"
+                    ? "w-full flex absolute items-center justify-between"
+                    : "w-full flex absolute items-center justify-between"
                 }
                 style={{
                   top: "50%",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
+                  padding: width > 1200 ? "0 55px" : null,
                 }}
               >
                 <button
