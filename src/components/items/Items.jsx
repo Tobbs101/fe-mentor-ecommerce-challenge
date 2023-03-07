@@ -187,7 +187,7 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
               </button>
             </div>
             <button
-              className="w-full flex-1 bg-customOrange border border-customOrange py-2 px-7 rounded flex items-center justify-center text-white gap-2"
+              className="w-full flex-1 bg-customOrange border border-customOrange hover:opacity-95 duration-200 py-2 px-7 rounded flex items-center justify-center text-white gap-2"
               style={{ boxShadow: "0 0 7px 0 #ccc" }}
               onClick={() => {
                 setCartDetails((prev) => {
