@@ -7,14 +7,16 @@ import Next from "../../assets/icon-next.svg";
 import Plus from "../../assets/icon-plus.svg";
 import Minus from "../../assets/icon-minus.svg";
 import CartIcon from "../../assets/icon-cart-white.svg";
+import Close from "../../assets/icon-close.svg";
 import { CartContext } from "../../context/CartContext";
 
-const Items = React.memo(() => {
+const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
   const [activeItemID, setActiveItemID] = useState(1);
   const [hoverItemID, setHoverItemID] = useState(null);
   const { width } = useWindowDimensions();
   const { cartDetails, setCartDetails } = useContext(CartContext);
   const [itemQuantity, setItemQuantity] = useState(0);
+  const [imgModal, showImgModal] = useState(false);
 
   // console.log(activeItemID);
   // console.log(width);
@@ -26,8 +28,8 @@ const Items = React.memo(() => {
     <div
       className={
         width > 650
-          ? "flex items-center justify-between w-full"
-          : "flex items-center justify-between w-full flex-col"
+          ? "relative flex items-center justify-between w-full"
+          : "relative flex items-center justify-between w-full flex-col"
       }
     >
       <div
@@ -73,6 +75,10 @@ const Items = React.memo(() => {
             className={
               width > 650 ? "rounded-lg cursor-pointer" : "cursor-pointer"
             }
+            onClick={() => {
+              showImgModal(!imgModal);
+              setImgBackDrop(!imgBackDrop);
+            }}
           />
         </div>
         {width > 650 && (
@@ -146,14 +152,14 @@ const Items = React.memo(() => {
           </p>
           <div
             className={
-              width > 650
+              width > 700
                 ? "flex mt-5 items-center gap-3"
                 : "flex mt-5 items-center gap-3 flex-col"
             }
           >
             <div
               className={
-                width > 650
+                width > 700
                   ? "flex bg-lightGrayishBlue rounded"
                   : "w-full flex bg-lightGrayishBlue rounded"
               }
@@ -198,6 +204,134 @@ const Items = React.memo(() => {
           </div>
         </div>
       </div>
+      {/* PICTURE MODAL */}
+      {imgModal && width > 650 && (
+        <div
+          className="bg-customBlack"
+          style={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            opacity: 0.5,
+          }}
+        ></div>
+      )}
+      {imgModal && width > 650 && (
+        <div
+          className="bg-white border border-red-500 absolute"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: "50",
+          }}
+        >
+          <div
+            className={
+              width > 650
+                ? "flex items-center justify-between flex-col flex-1 p-2"
+                : "flex items-center justify-between flex-col flex-1"
+            }
+          >
+            <div
+              className={
+                width > 1200
+                  ? "w-full flex items-center justify-end px-20"
+                  : "w-full flex items-center justify-end p-1 mb-2"
+              }
+            >
+              <button
+                onClick={() => {
+                  showImgModal(!imgModal);
+                  setImgBackDrop(!imgBackDrop);
+                }}
+              >
+                <img src={Close} alt="close" />
+              </button>
+            </div>
+            <div
+              className={
+                width > 1200 ? "relative flex-1 px-20 py-5" : "relative flex-1"
+              }
+            >
+              <div
+                className={width >"w-full absolute flex items-center justify-between px-12"
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <button
+                  className="bg-white h-12 w-12 rounded-full flex items-center justify-center"
+                  disabled={activeItemID === 1 ? true : false}
+                  onClick={() => {
+                    setActiveItemID(activeItemID - 1);
+                  }}
+                >
+                  <img src={Prev} alt="previous" className="mr-1" />
+                </button>
+                <button
+                  className="bg-white h-12 w-12 rounded-full flex items-center justify-center"
+                  disabled={activeItemID === items.length ? true : false}
+                  onClick={() => {
+                    setActiveItemID(activeItemID + 1);
+                  }}
+                >
+                  <img src={Next} alt="next" className="ml-1" />
+                </button>
+              </div>
+              <img
+                src={items[activeItemID - 1].item}
+                alt="product1"
+                className={
+                  width > 650 ? "rounded-lg cursor-pointer" : "cursor-pointer"
+                }
+              />
+            </div>
+            {width > 650 && (
+              <div className={width > 1200 ? "w-full px-20" : "w-full mt-2"}>
+                <ul className="flex items-center justify-between flex-row gap-8 py-1">
+                  {items.map((x) => (
+                    <li
+                      key={x.id}
+                      className={
+                        activeItemID === x.id
+                          ? "rounded-lg overflow-hidden cursor-pointer border-2 border-customOrange"
+                          : "rounded-lg overflow-hidden cursor-pointer border-2 border-transparent"
+                      }
+                      onClick={() => {
+                        setActiveItemID(x.id);
+                      }}
+                      onMouseEnter={() => {
+                        setHoverItemID(x.id);
+                      }}
+                      onMouseLeave={() => {
+                        setHoverItemID(null);
+                      }}
+                    >
+                      <img
+                        src={x.thumbNail}
+                        alt={"thumbnail" + x.id}
+                        style={{
+                          opacity:
+                            activeItemID === x.id
+                              ? "0.4"
+                              : hoverItemID === x.id
+                              ? "0.6"
+                              : "1",
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 });
