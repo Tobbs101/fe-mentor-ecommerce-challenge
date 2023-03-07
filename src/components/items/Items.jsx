@@ -259,8 +259,8 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
               <div
                 className={
                   width > 1200
-                    ? "w-full absolute flex items-center justify-between px-12"
-                    : "w-full absolute flex items-center justify-between"
+                    ? "w-full absolute flex items-center justify-between border border-green-500"
+                    : "w-full absolute flex items-center justify-between border border-green-500"
                 }
                 style={{
                   top: "50%",
