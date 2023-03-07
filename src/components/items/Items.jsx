@@ -214,7 +214,7 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
             bottom: 0,
             left: 0,
             right: 0,
-            opacity: 0.5,
+            opacity: 0.8,
           }}
         ></div>
       )}
@@ -239,7 +239,7 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
               className={
                 width > 1200
                   ? "w-full flex items-center justify-end px-20"
-                  : "w-full flex items-center justify-end p-1 mb-2"
+                  : "w-full flex items-center justify-end px-8 mb-2"
               }
             >
               <button
@@ -253,14 +253,16 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
             </div>
             <div
               className={
-                width > 1200 ? "relative flex-1 px-20 py-5" : "relative flex-1"
+                width > 1200
+                  ? "relative flex-1 px-20 py-5"
+                  : "relative flex-1 px-7"
               }
             >
               <div
                 className={
                   width > 1200
-                    ? "w-full absolute flex items-center justify-between border border-green-500"
-                    : "w-full absolute flex items-center justify-between border border-green-500"
+                    ? "w-full flex absolute items-center justify-between border border-green-500"
+                    : "w-full flex absolute items-center justify-between border border-green-500"
                 }
                 style={{
                   top: "50%",
@@ -296,7 +298,9 @@ const Items = React.memo(({ imgBackDrop, setImgBackDrop }) => {
               />
             </div>
             {width > 650 && (
-              <div className={width > 1200 ? "w-full px-20" : "w-full mt-2"}>
+              <div
+                className={width > 1200 ? "w-full px-20" : "w-full mt-2 px-7"}
+              >
                 <ul className="flex items-center justify-between flex-row gap-8 py-1">
                   {items.map((x) => (
                     <li
